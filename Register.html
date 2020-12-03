@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="stylesheet.css">
+	<title> Reflex Game </title>
+	<script>
+	function printError(elemId, hintMsg) {
+	    document.getElementById(elemId).innerHTML = hintMsg;
+	}
+
+	// Defining a function to validate form 
+	function validateForm() {
+
+	    // Retrieving the values of form elements 
+	    var name = document.registerForm.name.value;
+	    var email = document.registerForm.email.value;
+	    var password = document.registerForm.password.value;
+	    var country = document.registerForm.country.value;
+	    var gender = document.registerForm.gender.value;
+	    
+		// Defining error variables with a default value
+	    var nameErr = emailErr = passErr = countryErr = genderErr = true;
+	    
+	    // Validate name
+
+	    if(name == "") {
+	        printError("nameErr", "Please enter your name");
+	    } 
+		else {
+	        var regex = /^[a-zA-Z\s]+$/;                
+	        if(regex.test(name) === false) {
+	            printError("nameErr", "Please enter a valid name");
+	        } else {
+	        	nameErr = false;
+	        } 
+	    }
+	    
+	    // Validate email address
+
+	    if(email == "") {
+	        printError("emailErr", "Please enter your email address");
+	    } 
+	    else {
+	        // Regular expression for basic email validation
+	        var regex = /^\S+@\S+\.\S+$/;
+	        if(regex.test(email) === false) {
+	            printError("emailErr", "Please enter a valid email address");
+	        } else {
+	        	emailErr = false;
+	        }
+	    }
+	    
+	    // Validate password number
+	    if(password == "") {
+	        printError("passErr", "Please enter your password");
+	    } 
+		else {
+	        if(password.length<8) {
+	            printError("passErr", "Please enter a password of 8+ characters");
+	        }
+	        else {
+	        	passErr = false;
+	        }
+	    }
+	    
+	    // Validate country
+	    if(country == "Select") {
+	        printError("countryErr", "Please select your country");
+	    } else {
+	        countryErr = false;
+	    }
+	    
+	    // Validate gender
+	    if(gender == "") {
+	        printError("genderErr", "Please select your gender");
+	    }
+	 	else {
+	        genderErr = false;
+	    }
+	    
+	    // Prevent the form from being submitted if there are any errors
+	    if((nameErr || emailErr || passErr || countryErr || genderErr) == true) {
+	       return false;
+	    } 
+		else {
+	        // Creating a string from input data for preview
+	        var dataPreview = "You've entered the following details: \n" +
+	                          "Full Name: " + name + "\n" +
+	                          "Email Address: " + email + "\n" +
+	                          "Password: " + password + "\n" +
+	                          "Country: " + country + "\n" +
+	                          "Gender: " + gender + "\n";
+	     
+	        // Display input data in a dialog box before submitting the form
+	        alert(dataPreview);
+	        return true;
+	    }
+	};
+	</script>
+
+</head>
+<body>
+	<center>
+	<form name="registerForm" onsubmit="return validateForm();" action="Register.php" method="post">
+    <h2>Register</h2>
+    <div class="row">
+        <label>Name</label>
+        <input type="text" name="name">
+        <div class="error" id="nameErr"></div>
+    </div>
+    <div class="row">
+        <label>Email</label>
+        <input type="text" name="email">
+        <div class="error" id="emailErr"></div>
+    </div>
+    <div class="row">
+        <label>Pass</label>
+        <input type="password" name="password">
+        <div class="error" id="passErr"></div>
+    </div>
+    <div class="row">
+        <label>Country</label>
+        <select name="country">
+            <option>Select</option>
+            <option>India</option>
+            <option>UK</option>
+            <option>US</option>
+		</select>
+        <div class="error" id="countryErr"></div>
+    </div>
+    <div class="row">
+        <label>Gender</label>
+        <div class="form-inline">
+            <label><input type="radio" name="gender" value="male"> Male</label>
+            <label><input type="radio" name="gender" value="female"> Female</label>
+        </div>
+        <div class="error" id="genderErr"></div>
+	</div>
+    <div class="row">
+        <input type="submit" value="Register" id="menuButton">
+    </div>
+</form>
+	</center>
+</body>
+</html>

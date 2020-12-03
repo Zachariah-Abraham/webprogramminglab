@@ -1,0 +1,104 @@
+a {
+	text-decoration: none; 
+	color: white;
+}
+
+.error {
+	color: red !important;
+}
+body {
+	background-color:#111111
+}
+
+#loginFieldLabel {
+	width: 200px;
+	color: white;
+	margin-top: 300px;
+  	margin-bottom: 10px;
+  	margin-right: 55px;
+}
+
+#loginFieldLabelRe {
+	width: 200px;
+	color: white;
+	margin-top: 300px;
+  	margin-bottom: 10px;
+}
+
+table, th, td {
+  margin-left: 100px;
+  border: 0px solid white;
+  color: white;
+}
+
+#login {
+	width: 200px;
+	margin-top: 10px;
+  	margin-bottom: 10px;
+	padding: 14px 40px;
+	border-radius: 12px;
+	background-color: #FF8C00;
+	color:white;
+}
+
+input[name=name]{
+	width: 200px;
+	margin-top: 50px;
+  	margin-bottom: 10px;
+  	background-color: #222222;
+	color: white;
+	padding: 12px 20px;
+}
+
+input[name=email]{
+	width: 200px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	background-color: #222222;
+	color: white;
+	padding: 12px 20px;
+}
+
+input[name=password] {	
+	width: 200px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	background-color: #222222;
+	color: white;
+	padding: 12px 20px;
+}
+label {
+	color: white;
+}
+
+h2 {
+	color: red;
+}
+#pageIntro {
+	margin-bottom: 70px;
+}
+
+#menuButton {
+	width: 200px;
+	margin-top: 10px;
+  	margin-bottom: 10px;
+	padding: 14px 40px;
+	border-radius: 12px;
+	background-color: #FF8C00;
+	color:white;
+}
+
+#menuLastButton {
+	width: 200px;
+	padding: 14px 40px;
+	border-radius: 12px;
+	background-color: #808080;
+	color:white;
+}
+
+#footer {
+	position : absolute;
+	bottom : 0;
+	height : 40px;
+	margin-top : 40px;
+}

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="stylesheet.css">
+	<title> Reflex Game </title>
+	<script>
+		function printError(elemId, hintMsg) {
+			document.getElementById(elemId).innerHTML = hintMsg;
+		}
+	
+		// Defining a function to validate form 
+		function validateForm() {
+			// Retrieving the values of form elements 
+			var name = document.loginForm.name.value;
+			var password = document.loginForm.password.value;
+
+			// Defining error variables with a default value
+			var nameErr = passErr = true;
+			
+			// Validate name
+			if(name == "") {
+				printError("nameErr", "Please enter your name");
+			} 
+			else {
+				var regex = /^[a-zA-Z\s]+$/;                
+				if(regex.test(name) === false) {
+					printError("nameErr", "Please enter a valid name");
+				} else {
+					nameErr = false;
+				} 
+			}
+			
+			// Validate password number
+			if(password == "") {
+				printError("passErr", "Please enter your password");
+			} 
+			else {
+				if(password.length<8) {
+					printError("passErr", "Please enter a password of 8+ characters");
+				}
+				else {
+					passErr = false;
+				}
+			}
+			console.log("Pass: " + password + "Name" + name);	
+			// Prevent the form from being submitted if there are any errors
+			if((nameErr || passErr) == true) {
+			   return false;
+			}
+			return true;
+		};
+	</script>	
+</head>
+<body>
+	<center>
+		<form name="loginForm" onsubmit="return validateForm();" action="./Login.php" method="post">
+			<h2>Login</h2>
+			<div class="row">
+				<label>Name</label>
+				<input type="text" name="name">
+				<div class="error" id="nameErr"></div>
+			</div>
+			<div class="row">
+				<label>Pass </label>
+				<input type="password" name="password">
+				<div class="error" id="passErr"></div>	
+			<div class="row">
+				<input type="submit" value="Login" id="menuButton" style="background-color:#AD00FF;">
+			</div>
+		</form>
+		<form name="registerSwitch" action="./Register.html" method="post">
+			<div class="row">
+				<input type="submit" value="Register" id="menuButton">
+			</div>
+		</form>
+		
+	</center>
+</body>
+</html>

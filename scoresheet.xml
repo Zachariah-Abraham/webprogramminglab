@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<?xml-stylesheet type="text/xsl" href="./scoresheetstyle.xsl"?> 
+<scores>
+ <score> 
+ <name>Zachariah Abraham</name> 
+ <circles>15</circles> 
+ <timetaken>8000</timetaken> 
+ </score> 
+ <score> 
+ <name>Zachariah Tester</name> 
+ <circles>10</circles> 
+ <timetaken>7000</timetaken> 
+ </score>
+ <score>
+ <name>TesterAdmin</name> 
+ <circles>5</circles> 
+ <timetaken>3000</timetaken> 
+ </score>
+ <score> 
+ <name>Zachariah Test</name> 
+ <circles>30</circles> 
+ <timetaken>40000</timetaken> 
+ </score> 
+ <score> 
+ <name>Zac</name> 
+ <circles>45</circles> 
+ <timetaken>60000</timetaken> 
+ </score>
+ <score>
+ <name>Anonymous</name> 
+ <circles>5</circles> 
+ <timetaken>1000</timetaken> 
+ </score> 
+</scores>

@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Registration</title>
+<link rel="stylesheet" href="./stylesheet.css">
+<script>
+ 
+// Username, 
+// Phone number,
+// Password, 
+// Email, 
+// Address, 
+// Gender (Radio Button),
+// Language Known (Drop down box)
+// and 
+// Hobbies (check box)
+ 
+function printError(elemId, hintMsg) {
+    document.getElementById(elemId).innerHTML = hintMsg;
+}
+ 
+function validateForm() {
+ 
+    var name = document.contactForm.name.value;
+    var password = document.contactForm.password.value;
+    var address = document.contactForm.address.value;
+    var email = document.contactForm.email.value;
+    var mobile = document.contactForm.mobile.value;
+    var languages = document.contactForm.languages.value;
+    var gender = document.contactForm.gender.value;
+    var course = [];
+ 
+    var checkboxes = document.getElementsByName("course[]");
+    for(var i=0; i < checkboxes.length; i++) {
+        if(checkboxes[i].checked) {
+            course.push(checkboxes[i].value);
+        }
+    }
+    
+    var nameErr = emailErr = mobileErr = languagesErr = genderErr = passwordErr = addressErr = true;
+    
+ 
+    if(name == "") {
+        printError("nameErr", "Please enter your name");
+    } 
+ 
+else {
+        var regex = /^[a-zA-Z\s]+$/;                
+        if(regex.test(name) === false) {
+            printError("nameErr", "Please enter a valid name");
+        } 
+ 
+else {
+            printError("nameErr", "");
+            nameErr = false;
+        }
+    }
+ 
+    if(email == "") {
+        printError("emailErr", "Please enter your email address");
+    } 
+ 
+else {
+        var regex = /^\S+@\S+\.\S+$/;
+        if(regex.test(email) === false) {
+            printError("emailErr", "Please enter a valid email address");
+        }
+ 
+ else{
+            printError("emailErr", "");
+            emailErr = false;
+        }
+    }
+    
+    if(mobile == "") {
+        printError("mobileErr", "Please enter your mobile number");
+    } 
+ 
+else {
+        var regex = /^[1-9]\d{9}$/;
+        if(regex.test(mobile) === false) {
+            printError("mobileErr", "Please enter a valid 10 digit mobile number");
+        } 
+ 
+else{
+            printError("mobileErr", "");
+            mobileErr = false;
+        }
+    }
+    
+    if(password == "") {
+        printError("passwordErr", "Please enter your password");
+    } 
+ 
+else {
+        if(password.length < 8) {
+            printError("passwordErr", "Increase password length!");
+        } 
+ 
+    else {
+                printError("passwordErr", "");
+                passwordErr = false;
+            }
+    }
+ 
+    if(address == "") {
+        printError("addressErr", "Please enter your address");
+    } 
+ 
+else {
+        if(address.length < 10) {
+            printError("addressErr", "Please enter full address!");
+        } 
+ 
+    else {
+                printError("addressErr", "");
+                addressErr = false;
+            }
+    }
+ 
+    if(languages == "Select") {
+        printError("languagesErr", "Please select your languages");
+    } else {
+        printError("languagesErr", "");
+        languagesErr = false;
+    }
+    
+    if(gender == "") {
+        printError("genderErr", "Please select your gender");
+    }
+ 
+ else {
+        printError("genderErr", "");
+        genderErr = false;
+    }
+    
+    if((nameErr || emailErr || mobileErr || languagesErr || genderErr) == true) {
+       return false;
+    } 
+ 
+ 
+else {
+        var dataPreview = "You've entered the following details: \n" +
+                          "Full Name: " + name + "\n" +
+                          "Email Address: " + email + "\n" +
+                          "Mobile Number: " + mobile + "\n" +
+                          "Languages: " + languages + "\n" +
+                          "Gender: " + gender + "\n";
+        if(course.length) {
+            dataPreview += "course: " + course.join(", ");
+        }
+ 
+        alert(dataPreview);
+    }
+};
+</script>
+ 
+</head>
+<body>
+<center>
+<form name="contactForm" onsubmit="return validateForm()" action="./register_action.php" method="post">
+    <h2>Application Form</h2>
+    <div class="row">
+        <label>Full Name</label>
+        <input type="text" name="name">
+        <div class="error" id="nameErr"></div>
+    </div>
+    <div class="row">
+        <label>Password</label>
+        <input type="text" name="password">
+        <div class="error" id="passwordErr"></div>
+    </div>
+    <div class="row">
+        <label>Email Address</label>
+        <input type="text" name="email">
+        <div class="error" id="emailErr"></div>
+    </div>
+    <div class="row">
+        <label>Mobile Number</label>
+        <input type="text" name="mobile" maxlength="10">
+        <div class="error" id="mobileErr"></div>
+    </div>
+    <div class="row">
+        <label>Address</label>
+        <input type="text" name="address">
+        <div class="error" id="addressErr"></div>
+    </div>
+    <div class="row">
+        <label>Languages</label>
+        <select name="languages">
+            <option>Select</option>
+            <option>English</option>
+            <option>Hindi</option>
+            <option>Chinese</option>
+            <option>Spanish</option>
+        </select>
+        <div class="error" id="languagesErr"></div>
+    </div>
+    <div class="row">
+        <label>Gender</label>
+        <div class="form-inline">
+            <label><input type="radio" name="gender" value="male"> Male</label>
+            <label><input type="radio" name="gender" value="female"> Female</label>
+        </div>
+        <div class="error" id="genderErr"></div>
+    </div>
+    <div class="row">
+        <label>course <i>(Optional)</i></label>
+        <div class="form-inline">
+            <label><input type="checkbox" name="course[]" value="software"> software</label>
+            <label><input type="checkbox" name="course[]" value="it"> it</label>
+            <label><input type="checkbox" name="course[]" value="cse"> cse</label>
+        </div>
+    </div>
+    <div class="row">
+        <input type="submit" value="Submit">
+    </div>
+</form>
+</center>
+</body>
+</html>
